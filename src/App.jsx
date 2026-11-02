@@ -12,14 +12,14 @@ function App() {
 
   // Fungsi untuk mengambil data dari API (AJAX)
   const fetchMenus = async () => {
-    setIsLoading(true); // Set state loading aktif
-    setIsError(false);  // Reset state error
+    setIsLoading(true); 
+    setIsError(false); 
 
     try {
-      // Simulasi delay 1.5 detik agar Anda sempat men-screenshot kondisi "Loading"
+
       await new Promise(resolve => setTimeout(resolve, 1500));
 
-      // Mengambil mock data dari JSONPlaceholder sesuai izin Tugas 7
+
       const response = await fetch('[https://jsonplaceholdeeeeer.typicode.com/posts?_limit=4](https://jsonplaceholdeeeeer.typicode.com/posts?_limit=4)');
       
       if (!response.ok) {
@@ -28,20 +28,20 @@ function App() {
       
       const data = await response.json();
       
-      // Memformat data dummy dari API agar cocok dengan entitas Menu kita
+
       const formattedData = data.map(item => ({
         id: item.id,
-        nama: item.title.substring(0, 15) + '...', // Potong teks agar rapi
+        nama: item.title.substring(0, 15) + '...', 
         varian: 'Varian Mock API',
-        harga: item.id * 5000 + 10000, // Generate harga acak berdasarkan ID
+        harga: item.id * 5000 + 10000, 
         stok: item.id * 3
       }));
       
-      setMenus(formattedData); // Set state success
+      setMenus(formattedData);
     } catch (error) {
-      setIsError(true); // Set state error jika gagal
+      setIsError(true); 
     } finally {
-      setIsLoading(false); // Matikan state loading
+      setIsLoading(false); 
     }
   };
 
